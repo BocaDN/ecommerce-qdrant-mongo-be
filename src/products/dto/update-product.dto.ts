@@ -50,12 +50,6 @@ export class UpdateProductRequestDto {
   readonly qdrant_id: string;
 
   @ApiProperty({
-    description: 'Mongo ID (Mongo ObjectId)',
-    example: '6859abc7c2c0c81e297b515c',
-  })
-  readonly mongo_id: string;
-
-  @ApiProperty({
     description: 'Category',
     example: '/scule-pneumatice-si-compresoare-aer',
   })
@@ -91,9 +85,6 @@ export class UpdateProductResponseDto {
 
   @IsString()
   readonly qdrant_id: string;
-
-  @IsString()
-  readonly mongo_id: string;
 
   @IsString()
   readonly category: string;

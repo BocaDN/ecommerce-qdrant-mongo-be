@@ -110,10 +110,6 @@ export class CreateProductResponseDto {
   @IsNotEmpty()
   readonly qdrant_id: string;
 
-  @IsMongoId()
-  @IsNotEmpty()
-  readonly mongo_id: string;
-
   @IsNotEmpty()
   readonly category: string;
 

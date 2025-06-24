@@ -24,7 +24,7 @@ export const ProductsSchema = new Schema(
   {
     name: { type: String, required: true },
     price: { type: String, required: true },
-    images: { type: String, required: false },
+    images: { type: [String], required: false },
     qdrant_id: { type: String, required: true },
     category: { type: String, required: true },
     status: {
