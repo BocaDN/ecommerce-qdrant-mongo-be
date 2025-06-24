@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Put,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { ProductsService } from './service/products.service';
 import {
   CreateProductRequestDto,
@@ -22,7 +14,7 @@ import { GetProductResponseDto } from './dto/get-product.dto';
 @ApiTags('Products')
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService) { }
 
   @Get()
   @ApiOperation({ summary: 'Get all products' })
