@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Product, ProductDocument } from './schemas/products.schema';
-import { CreateProductDto } from './dto/create-product.dto';
+import { CreateProductRequestDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import {
   Category,
@@ -19,14 +19,16 @@ export class ProductsService {
     private categoryModel: Model<CategoryDocument>,
   ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
+  async create(
+    createProductRequestDto: CreateProductRequestDto,
+  ): Promise<Product> {
     const category = await this.categoryModel
-      .findById(createProductDto.category)
+      .findById(createProductRequestDto.category)
       .exec();
     if (!category) throw new NotFoundException('Category not found');
 
     const createdProduct = new this.productModel({
-      ...createProductDto,
+      ...createProductRequestDto,
       category: category._id,
     });
     return createdProduct.save();
